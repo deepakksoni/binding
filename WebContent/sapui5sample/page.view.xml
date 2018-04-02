@@ -1,0 +1,20 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m" controllerName="sapui5sample.page" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Title">
+		<content>
+
+			<ObjectStatus
+				class="sapUiSmallMarginBottom"
+				text="Data1 : {/data1} is lesser than data2 : {/data2} "
+				state="{= ${/data1} > ${/data2} ? 'Error' : 'Success' }" />
+				
+				 
+
+			<List   items="{/listData}" mode="None"
+				includeItemInSelection="true">
+				<StandardListItem title="{empId}" description="{empName}"  />
+			</List>
+
+		</content>
+	</Page>
+</core:View>
