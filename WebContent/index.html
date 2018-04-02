@@ -17,6 +17,9 @@
 				var app = new sap.m.App({initialPage:"idpage1"});
 				var page = sap.ui.view({id:"idpage1", viewName:"sapui5sample.page", type:sap.ui.core.mvc.ViewType.XML});
 				app.addPage(page);
+				// Register the view with the message manager
+				sap.ui.getCore().getMessageManager().registerObject(app, true);
+				
 				app.placeAt("content");
 		</script>
 

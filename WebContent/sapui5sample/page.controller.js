@@ -11,21 +11,49 @@ sap.ui.controller("sapui5sample.page", {
 				companyName : "SAP",
 				data1 : 1123,
 				data2 : 2222,
+				address : {
+					street : "#3B-Marathalli",
+					pincode : "560017",
+					state : "Karnataka",
+					country : "India"
+				},
 				listData : [
 				            {
 				            "empId" : "001",
-				            "empName" : "Deepak"
+				            "empName" : "Deepak",
+				            "mob": "8976900987",
+				            "email" : "deepak@gmail.com"
 				            },
 				            {
 					            "empId" : "002",
-					            "empName" : "Ravi"
+					            "empName" : "Ravi",
+					            "mob": "9876789567",
+					            "email" : "ravi@gmail.com"
 					            }
 				]
 		};
 		jsonModel.setData(jsonData);
 		this.getView().setModel(jsonModel);
+//		this.inputValidate();
 		jsonModel.refresh();
 	},
+	
+	
+	
+	//Element Binding 
+	onItemSelected: function(oEvent) {
+		var oSelectedItem = oEvent.getSource();
+		var oContext = oSelectedItem.getBindingContext("products");
+		var sPath = oContext.getPath();
+		var oProductDetailPanel = this.getView().byId("productDetailsPanel");
+		oProductDetailPanel.bindElement({ path: sPath, model: "" });
+//		oProductDetailPanel.bindElement({ path: sPath, model: "modelName" });
+	},
+	
+	getSelectedData : function(oEvent){
+		debugger;
+	}
+	
 
 /**
 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered

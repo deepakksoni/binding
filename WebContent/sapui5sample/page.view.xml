@@ -1,19 +1,50 @@
-<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout"
 	xmlns="sap.m" controllerName="sapui5sample.page" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page title="Title">
 		<content>
 
-			<ObjectStatus
-				class="sapUiSmallMarginBottom"
-				text="Data1 : {/data1} is lesser than data2 : {/data2} "
-				state="{= ${/data1} > ${/data2} ? 'Error' : 'Success' }" />
-				
-				 
+			<!-- Expression Binding -->
+			<ObjectStatus class="sapUiSmallMarginBottom"
+				text="Data1 : {/data1} is lesser than data2 : {/data2} " state="{= ${/data1} > ${/data2} ? 'Error' : 'Success' }" />
 
-			<List   items="{/listData}" mode="None"
-				includeItemInSelection="true">
-				<StandardListItem title="{empId}" description="{empName}"  />
+
+			<!-- Hierarchically Structured data binding -->
+			<Text
+				text="{/address/street} \n {/address/state} - {/address/pincode} \n {/address/country}">
+			</Text>
+
+
+			<!-- Aggregation Binding -->
+			<List items="{/listData}" mode="None" includeItemInSelection="true" select="onItemSelected" >
+				<StandardListItem press="getSelectedData" title="{empId}" description="{empName}" />
 			</List>
+			
+
+			<!-- *****************Element Binding******************************** 
+				Now we want to do something with that newly generated 
+				list. In most cases you will use a list to allow the selection of an item 
+				and then show the details of that item elsewhere. In order to achieve this, 
+				we use a form with relatively bound controls an bind it to the selected entity 
+				via element binding. 
+			-->
+
+			 <Panel id="productDetailsPanel" headerText="" class="sapUiResponsiveMargin" width="auto">
+			    <l:Grid defaultSpan="L3 M6 S12" containerQuery="true">
+			        <Label text="Name" />
+			        <Input value="{/empName}" />
+			        
+			        <Label text="ID" />
+			        <Input value="{/empId}" />
+			
+			        <Label text="Phone No." />
+			        <Input value="{/mob}" />
+			        
+			        <Label text="Mail Id" />
+			        <Input value="{/email}" />
+			        
+			    </l:Grid>    
+			  </Panel>
+
 
 		</content>
 	</Page>
