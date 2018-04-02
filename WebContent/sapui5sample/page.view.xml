@@ -4,6 +4,7 @@
 		<content>
 
 			<!-- Expression Binding -->
+			<VBox>
 			<ObjectStatus class="sapUiSmallMarginBottom"
 				text="Data1 : {/data1} is lesser than data2 : {/data2} " state="{= ${/data1} > ${/data2} ? 'Error' : 'Success' }" />
 
@@ -12,6 +13,7 @@
 			<Text
 				text="{/address/street} \n {/address/state} - {/address/pincode} \n {/address/country}">
 			</Text>
+			</VBox>
 
 
 			<!-- Aggregation Binding -->
@@ -44,6 +46,10 @@
 			        
 			    </l:Grid>    
 			  </Panel>
+			  
+			  <!-- Aggregation Binding with factory function -->
+			  <List items="{path:'/listData',factory:'.listdataDisplay'}" mode="None" includeItemInSelection="true" select="onItemSelected" >
+			</List>
 
 
 		</content>

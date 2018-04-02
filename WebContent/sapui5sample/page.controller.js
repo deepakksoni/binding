@@ -52,6 +52,36 @@ sap.ui.controller("sapui5sample.page", {
 	
 	getSelectedData : function(oEvent){
 		debugger;
+	},
+	
+//	<StandardListItem
+//	title="{Name}"
+//	description="{ProductId}"
+//	icon="{ProductPicUrl}"
+//	iconDensityAware="false"
+//	iconInset="false"
+//	press="handlePress"
+//	detailPress="handleDetailPress" />
+	
+	listdataDisplay : function(sId, oContext) {
+		var empId = oContext.getProperty("empId");
+		var uControl ="";
+		if( empId == "001" ){
+			if (!this.stdList) {
+				this.stdList = new sap.m.StandardListItem({
+					title : "{empId}",
+					description : "{empName}"
+				});
+				uControl = this.stdList;
+			}
+		}else{
+			this.stdList = new sap.m.ObjectListItem({
+				title : "{empId}",
+				number : "{empName}"
+			});
+			uControl = this.stdList;
+		}
+		return this.stdList;
 	}
 	
 
